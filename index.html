@@ -1,30 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Workflow Souscripteur Assurance Auto</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
+            margin: 20px;
             background-color: #f5f5f5;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
-
         h1 {
             text-align: center;
             color: #007BFF;
-            margin-bottom: 30px;
         }
-
         .workflow-item {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
-
         .step {
             cursor: pointer;
             background-color: #e0e0e0;
@@ -32,36 +24,44 @@
             border-radius: 5px;
             font-weight: bold;
             transition: background-color 0.2s;
+            position: relative;
         }
-
         .step:hover {
             background-color: #d0d0d0;
         }
-
+        .step::after {
+            content: ' ▼';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.2s;
+        }
+        .step.active::after {
+            transform: translateY(-50%) rotate(-180deg);
+        }
         .details {
             display: none;
             padding: 12px;
             margin-top: 5px;
             border-left: 4px solid #007BFF;
-            background-color: #fff;
+            background-color: #ffffff;
             border-radius: 0 5px 5px 0;
         }
-
         ul {
             margin: 0;
             padding-left: 20px;
         }
-
-        footer {
-            margin-top: auto; /* pushes footer to bottom */
-            text-align: center;
-            padding: 15px 0;
-            background-color: #fff;
-            border-top: 1px solid #ccc;
+        li input[type="checkbox"] {
+            margin-right: 8px;
         }
-
-        footer img {
+        .footer-image {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .footer-image img {
             max-width: 100%;
+            max-height: 150px;
             height: auto;
             border-radius: 8px;
         }
@@ -70,15 +70,14 @@
 <body>
     <h1>Workflow Souscripteur Assurance Auto</h1>
 
-    <!-- Workflow steps -->
     <div class="workflow-item">
         <div class="step">1. Vérifier les informations du client</div>
         <div class="details">
             <ul>
-                <li>Nom et prénom du client</li>
-                <li>Marque, modèle et année du véhicule</li>
-                <li>Usage du véhicule (personnel / professionnel)</li>
-                <li>Historique d’accidents et assurances passées</li>
+                <li><input type="checkbox" /> Nom et prénom du client</li>
+                <li><input type="checkbox" /> Marque, modèle et année du véhicule</li>
+                <li><input type="checkbox" /> Usage du véhicule (personnel / professionnel)</li>
+                <li><input type="checkbox" /> Historique d’accidents et assurances passées</li>
             </ul>
         </div>
     </div>
@@ -87,10 +86,10 @@
         <div class="step">2. Identifier la formule d’assurance</div>
         <div class="details">
             <ul>
-                <li>Au tiers</li>
-                <li>Autoflex (5 à 16 ans)</li>
-                <li>Tous risques (moins de 5 ans)</li>
-                <li>⚠️ Vérifier la valeur et l’âge du véhicule pour choisir la formule adaptée</li>
+                <li><input type="checkbox" /> Au tiers</li>
+                <li><input type="checkbox" /> Autoflex (5 à 16 ans)</li>
+                <li><input type="checkbox" /> Tous risques (moins de 5 ans)</li>
+                <li><input type="checkbox" /> ⚠️ Vérifier la valeur et l’âge du véhicule pour choisir la formule adaptée</li>
             </ul>
         </div>
     </div>
@@ -99,23 +98,28 @@
         <div class="step">3. Vérifier les garanties</div>
         <div class="details">
             <ul>
-                <li>Responsabilité civile</li>
-                <li>Défense recours</li>
-                <li>Personne transportée</li>
-                <li>Bris de glace, Incendie, Vol</li>
-                <li>Tierce complète</li>
+                <li><input type="checkbox" /> Responsabilité civile</li>
+                <li><input type="checkbox" /> Défense recours</li>
+                <li><input type="checkbox" /> Personne transportée</li>
+                <li><input type="checkbox" /> Bris de glace, Incendie, Vol</li>
+                <li><input type="checkbox" /> Tierce complète</li>
             </ul>
         </div>
+    </div>
+
+    <!-- Image moved higher -->
+    <div class="footer-image">
+        <img src="944ac656-3570-467f-9da5-580763d2b836.jpg" alt="La Protectrice Assurances" />
     </div>
 
     <div class="workflow-item">
         <div class="step">4. Préparer les questions à poser</div>
         <div class="details">
             <ul>
-                <li>Montant des franchises pour chaque garantie</li>
-                <li>Exclusions spécifiques pour chaque garantie</li>
-                <li>Options modulables disponibles</li>
-                <li>Délais et procédure pour déclarer un sinistre</li>
+                <li><input type="checkbox" /> Montant des franchises pour chaque garantie</li>
+                <li><input type="checkbox" /> Exclusions spécifiques pour chaque garantie</li>
+                <li><input type="checkbox" /> Options modulables disponibles</li>
+                <li><input type="checkbox" /> Délais et procédure pour déclarer un sinistre</li>
             </ul>
         </div>
     </div>
@@ -124,10 +128,10 @@
         <div class="step">5. Collecter les documents nécessaires</div>
         <div class="details">
             <ul>
-                <li>Carte grise du véhicule</li>
-                <li>Permis de conduire</li>
-                <li>Photos du véhicule</li>
-                <li>Contrats d’assurance antérieurs</li>
+                <li><input type="checkbox" /> Carte grise du véhicule</li>
+                <li><input type="checkbox" /> Permis de conduire</li>
+                <li><input type="checkbox" /> Photos du véhicule</li>
+                <li><input type="checkbox" /> Contrats d’assurance antérieurs</li>
             </ul>
         </div>
     </div>
@@ -136,25 +140,21 @@
         <div class="step">6. Notes et commentaires</div>
         <div class="details">
             <ul>
-                <li>Ajouter les observations spécifiques du client</li>
-                <li>Préciser toute particularité de la souscription</li>
-                <li>Rappeler les étapes à suivre après la souscription</li>
+                <li><input type="checkbox" /> Ajouter les observations spécifiques du client</li>
+                <li><input type="checkbox" /> Préciser toute particularité de la souscription</li>
+                <li><input type="checkbox" /> Rappeler les étapes à suivre après la souscription</li>
             </ul>
         </div>
     </div>
 
-    <!-- Footer with local image -->
-    <footer>
-        <img src="footer-image.jpg" alt="Footer Image">
-    </footer>
-
     <script>
-        // Toggle workflow details
         const steps = document.querySelectorAll('.step');
         steps.forEach(step => {
             step.addEventListener('click', () => {
                 const details = step.nextElementSibling;
-                details.style.display = details.style.display === 'block' ? 'none' : 'block';
+                const isVisible = details.style.display === 'block';
+                details.style.display = isVisible ? 'none' : 'block';
+                step.classList.toggle('active', !isVisible);
             });
         });
     </script>
