@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Workflow Souscripteur Assurance Auto</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
-        h1 { text-align: center; color: #007BFF; }
-        .workflow-item { margin-bottom: 10px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        .workflow-item {
+            margin-bottom: 10px;
+        }
         .step {
             cursor: pointer;
             background-color: #e0e0e0;
@@ -15,8 +24,23 @@
             border-radius: 5px;
             font-weight: bold;
             transition: background-color 0.2s;
+            position: relative;
         }
-        .step:hover { background-color: #d0d0d0; }
+        .step:hover {
+            background-color: #d0d0d0;
+        }
+        /* Flèche indicatrice */
+        .step::after {
+            content: ' ▼';
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform 0.2s;
+        }
+        .step.active::after {
+            transform: translateY(-50%) rotate(-180deg);
+        }
         .details {
             display: none;
             padding: 12px;
@@ -25,7 +49,25 @@
             background-color: #ffffff;
             border-radius: 0 5px 5px 0;
         }
-        ul { margin: 0; padding-left: 20px; }
+        ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        /* Styles pour les checkboxes */
+        li input[type="checkbox"] {
+            margin-right: 8px;
+        }
+        /* Style image en bas */
+        .footer-image {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .footer-image img {
+            max-width: 100%;
+            max-height: 150px;
+            height: auto;
+            border-radius: 8px;
+        }
     </style>
 </head>
 <body>
@@ -35,10 +77,10 @@
         <div class="step">1. Vérifier les informations du client</div>
         <div class="details">
             <ul>
-                <li>Nom et prénom du client</li>
-                <li>Marque, modèle et année du véhicule</li>
-                <li>Usage du véhicule (personnel / professionnel)</li>
-                <li>Historique d’accidents et assurances passées</li>
+                <li><input type="checkbox" /> Nom et prénom du client</li>
+                <li><input type="checkbox" /> Marque, modèle et année du véhicule</li>
+                <li><input type="checkbox" /> Usage du véhicule (personnel / professionnel)</li>
+                <li><input type="checkbox" /> Historique d’accidents et assurances passées</li>
             </ul>
         </div>
     </div>
@@ -47,10 +89,10 @@
         <div class="step">2. Identifier la formule d’assurance</div>
         <div class="details">
             <ul>
-                <li>Au tiers</li>
-                <li>Autoflex (5 à 16 ans)</li>
-                <li>Tous risques (moins de 5 ans)</li>
-                <li>⚠️ Vérifier la valeur et l’âge du véhicule pour choisir la formule adaptée</li>
+                <li><input type="checkbox" /> Au tiers</li>
+                <li><input type="checkbox" /> Autoflex (5 à 16 ans)</li>
+                <li><input type="checkbox" /> Tous risques (moins de 5 ans)</li>
+                <li><input type="checkbox" /> ⚠️ Vérifier la valeur et l’âge du véhicule pour choisir la formule adaptée</li>
             </ul>
         </div>
     </div>
@@ -59,11 +101,11 @@
         <div class="step">3. Vérifier les garanties</div>
         <div class="details">
             <ul>
-                <li>Responsabilité civile</li>
-                <li>Défense recours</li>
-                <li>Personne transportée</li>
-                <li>Bris de glace, Incendie, Vol</li>
-                <li>Tierce complète</li>
+                <li><input type="checkbox" /> Responsabilité civile</li>
+                <li><input type="checkbox" /> Défense recours</li>
+                <li><input type="checkbox" /> Personne transportée</li>
+                <li><input type="checkbox" /> Bris de glace, Incendie, Vol</li>
+                <li><input type="checkbox" /> Tierce complète</li>
             </ul>
         </div>
     </div>
@@ -72,10 +114,10 @@
         <div class="step">4. Préparer les questions à poser</div>
         <div class="details">
             <ul>
-                <li>Montant des franchises pour chaque garantie</li>
-                <li>Exclusions spécifiques pour chaque garantie</li>
-                <li>Options modulables disponibles</li>
-                <li>Délais et procédure pour déclarer un sinistre</li>
+                <li><input type="checkbox" /> Montant des franchises pour chaque garantie</li>
+                <li><input type="checkbox" /> Exclusions spécifiques pour chaque garantie</li>
+                <li><input type="checkbox" /> Options modulables disponibles</li>
+                <li><input type="checkbox" /> Délais et procédure pour déclarer un sinistre</li>
             </ul>
         </div>
     </div>
@@ -84,10 +126,10 @@
         <div class="step">5. Collecter les documents nécessaires</div>
         <div class="details">
             <ul>
-                <li>Carte grise du véhicule</li>
-                <li>Permis de conduire</li>
-                <li>Photos du véhicule</li>
-                <li>Contrats d’assurance antérieurs</li>
+                <li><input type="checkbox" /> Carte grise du véhicule</li>
+                <li><input type="checkbox" /> Permis de conduire</li>
+                <li><input type="checkbox" /> Photos du véhicule</li>
+                <li><input type="checkbox" /> Contrats d’assurance antérieurs</li>
             </ul>
         </div>
     </div>
@@ -96,19 +138,30 @@
         <div class="step">6. Notes et commentaires</div>
         <div class="details">
             <ul>
-                <li>Ajouter les observations spécifiques du client</li>
-                <li>Préciser toute particularité de la souscription</li>
-                <li>Rappeler les étapes à suivre après la souscription</li>
+                <li><input type="checkbox" /> Ajouter les observations spécifiques du client</li>
+                <li><input type="checkbox" /> Préciser toute particularité de la souscription</li>
+                <li><input type="checkbox" /> Rappeler les étapes à suivre après la souscription</li>
             </ul>
         </div>
     </div>
 
+    <!-- Image en bas de page -->
+    <div class="footer-image">
+        <img src="944ac656-3570-467f-9da5-580763d2b836.jpg" alt="La Protectrice Assurances" />
+    </div>
+
     <script>
         const steps = document.querySelectorAll('.step');
-        steps.forEach(s => {
-            s.addEventListener('click', () => {
-                const details = s.nextElementSibling;
-                details.style.display = details.style.display === 'block' ? 'none' : 'block';
+        steps.forEach(step => {
+            step.addEventListener('click', () => {
+                const details = step.nextElementSibling;
+                const isVisible = details.style.display === 'block';
+
+                // Toggle display
+                details.style.display = isVisible ? 'none' : 'block';
+
+                // Toggle arrow rotation
+                step.classList.toggle('active', !isVisible);
             });
         });
     </script>
