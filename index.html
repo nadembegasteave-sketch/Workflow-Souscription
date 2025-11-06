@@ -1,185 +1,116 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>FAQ interactive avec sous-onglets</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f5f7fa;
-      color: #222;
-      padding: 30px;
-    }
-    h1 {
-      color: #2563eb;
-      text-align: center;
-    }
-    .section {
-      background-color: #fff;
-      border-radius: 8px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-      margin: 15px auto;
-      max-width: 700px;
-      padding: 20px;
-    }
-    .question {
-      font-weight: bold;
-      cursor: pointer;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .question::after {
-      content: "➡️";
-      transition: transform 0.3s ease;
-    }
-    .question.open::after {
-      transform: rotate(90deg);
-    }
-    .reponse {
-      overflow: hidden;
-      max-height: 0;
-      transition: all 0.4s ease;
-      color: #555;
-      margin-top: 10px;
-    }
-    .reponse.show {
-      max-height: 800px;
-    }
-    .choix {
-      margin-top: 10px;
-    }
-    .choix button {
-      background-color: #2563eb;
-      color: #fff;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-right: 10px;
-    }
-    .choix button:hover {
-      background-color: #1e4ed8;
-    }
-    .sous-section {
-      background-color: #f0f4ff;
-      border-left: 3px solid #2563eb;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 6px;
-      display: none;
-      animation: fadeIn 0.4s ease;
-    }
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(-5px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workflow Souscripteur Assurance Auto</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
+        h1 { text-align: center; color: #007BFF; }
+        .workflow-item { margin-bottom: 10px; }
+        .step {
+            cursor: pointer;
+            background-color: #e0e0e0;
+            padding: 12px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.2s;
+        }
+        .step:hover { background-color: #d0d0d0; }
+        .details {
+            display: none;
+            padding: 12px;
+            margin-top: 5px;
+            border-left: 4px solid #007BFF;
+            background-color: #ffffff;
+            border-radius: 0 5px 5px 0;
+        }
+        ul { margin: 0; padding-left: 20px; }
+    </style>
 </head>
 <body>
+    <h1>Workflow Souscripteur Assurance Auto</h1>
 
-  <h1>FAQ interactive 🌿</h1>
-
-  <!-- 🟢 Section 1 -->
-  <div class="section">
-    <div class="question">Souhaitez-vous en savoir plus sur le fonctionnement ?</div>
-    <div class="reponse">
-      <p>Choisissez une réponse :</p>
-      <div class="choix">
-        <button data-target="oui1">Oui</button>
-        <button data-target="non1">Non</button>
-      </div>
-      <div class="sous-section" id="oui1">
-        <p>Le fonctionnement est basé sur des scripts JavaScript simples qui affichent les sous-sections dynamiquement 💡</p>
-      </div>
-      <div class="sous-section" id="non1">
-        <p>Aucun souci 😄 Vous pouvez passer à la question suivante.</p>
-      </div>
+    <div class="workflow-item">
+        <div class="step">1. Vérifier les informations du client</div>
+        <div class="details">
+            <ul>
+                <li>Nom et prénom du client</li>
+                <li>Marque, modèle et année du véhicule</li>
+                <li>Usage du véhicule (personnel / professionnel)</li>
+                <li>Historique d’accidents et assurances passées</li>
+            </ul>
+        </div>
     </div>
-  </div>
 
-  <!-- 🟢 Section 2 -->
-  <div class="section">
-    <div class="question">Voulez-vous connaître les technologies utilisées ?</div>
-    <div class="reponse">
-      <p>Choisissez une réponse :</p>
-      <div class="choix">
-        <button data-target="oui2">Oui</button>
-        <button data-target="non2">Non</button>
-      </div>
-      <div class="sous-section" id="oui2">
-        <p>Ce projet utilise uniquement HTML, CSS et JavaScript — aucun framework requis 🚀</p>
-      </div>
-      <div class="sous-section" id="non2">
-        <p>Pas de problème 😊 Allons à la prochaine question.</p>
-      </div>
+    <div class="workflow-item">
+        <div class="step">2. Identifier la formule d’assurance</div>
+        <div class="details">
+            <ul>
+                <li>Au tiers</li>
+                <li>Autoflex (5 à 16 ans)</li>
+                <li>Tous risques (moins de 5 ans)</li>
+                <li>⚠️ Vérifier la valeur et l’âge du véhicule pour choisir la formule adaptée</li>
+            </ul>
+        </div>
     </div>
-  </div>
 
-  <!-- 🟢 Section 3 -->
-  <div class="section">
-    <div class="question">Souhaitez-vous personnaliser les couleurs ?</div>
-    <div class="reponse">
-      <p>Choisissez une réponse :</p>
-      <div class="choix">
-        <button data-target="oui3">Oui</button>
-        <button data-target="non3">Non</button>
-      </div>
-      <div class="sous-section" id="oui3">
-        <p>Vous pouvez facilement changer les couleurs dans le bloc CSS, notamment les variables <code>#2563eb</code> et <code>#f0f4ff</code> 🎨</p>
-      </div>
-      <div class="sous-section" id="non3">
-        <p>Très bien 👍 Les couleurs actuelles sont déjà harmonieuses.</p>
-      </div>
+    <div class="workflow-item">
+        <div class="step">3. Vérifier les garanties</div>
+        <div class="details">
+            <ul>
+                <li>Responsabilité civile</li>
+                <li>Défense recours</li>
+                <li>Personne transportée</li>
+                <li>Bris de glace, Incendie, Vol</li>
+                <li>Tierce complète</li>
+            </ul>
+        </div>
     </div>
-  </div>
 
-  <!-- 🟢 Section 4 -->
-  <div class="section">
-    <div class="question">Souhaitez-vous télécharger cette FAQ ?</div>
-    <div class="reponse">
-      <p>Choisissez une réponse :</p>
-      <div class="choix">
-        <button data-target="oui4">Oui</button>
-        <button data-target="non4">Non</button>
-      </div>
-      <div class="sous-section" id="oui4">
-        <p>Il suffit de copier ce code HTML dans ton éditeur (comme VS Code) et d’enregistrer en <code>faq.html</code> 💾</p>
-      </div>
-      <div class="sous-section" id="non4">
-        <p>D’accord 😄 Vous pouvez simplement l’essayer ici pour l’instant.</p>
-      </div>
+    <div class="workflow-item">
+        <div class="step">4. Préparer les questions à poser</div>
+        <div class="details">
+            <ul>
+                <li>Montant des franchises pour chaque garantie</li>
+                <li>Exclusions spécifiques pour chaque garantie</li>
+                <li>Options modulables disponibles</li>
+                <li>Délais et procédure pour déclarer un sinistre</li>
+            </ul>
+        </div>
     </div>
-  </div>
 
-  <script>
-    // Gère l’ouverture / fermeture de chaque question principale
-    const questions = document.querySelectorAll('.question');
-    questions.forEach(q => {
-      q.addEventListener('click', () => {
-        q.classList.toggle('open');
-        q.nextElementSibling.classList.toggle('show');
-      });
-    });
+    <div class="workflow-item">
+        <div class="step">5. Collecter les documents nécessaires</div>
+        <div class="details">
+            <ul>
+                <li>Carte grise du véhicule</li>
+                <li>Permis de conduire</li>
+                <li>Photos du véhicule</li>
+                <li>Contrats d’assurance antérieurs</li>
+            </ul>
+        </div>
+    </div>
 
-    // Gère les boutons Oui / Non
-    const boutons = document.querySelectorAll('.choix button');
-    boutons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const parent = btn.closest('.reponse');
-        const targetId = btn.dataset.target;
+    <div class="workflow-item">
+        <div class="step">6. Notes et commentaires</div>
+        <div class="details">
+            <ul>
+                <li>Ajouter les observations spécifiques du client</li>
+                <li>Préciser toute particularité de la souscription</li>
+                <li>Rappeler les étapes à suivre après la souscription</li>
+            </ul>
+        </div>
+    </div>
 
-        // Masque toutes les sous-sections de cette réponse
-        parent.querySelectorAll('.sous-section').forEach(sec => sec.style.display = 'none');
-
-        // Affiche uniquement la sous-section ciblée
-        const cible = document.getElementById(targetId);
-        if (cible) {
-          cible.style.display = 'block';
-        }
-      });
-    });
-  </script>
-
+    <script>
+        const steps = document.querySelectorAll('.step');
+        steps.forEach(s => {
+            s.addEventListener('click', () => {
+                const details = s.nextElementSibling;
+                details.style.display = details.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+    </script>
 </body>
 </html>
