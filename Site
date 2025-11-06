@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>FAQ interactive avec sous-onglets</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fa;
+      color: #222;
+      padding: 30px;
+    }
+    h1 {
+      color: #2563eb;
+      text-align: center;
+    }
+    .section {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      margin: 15px auto;
+      max-width: 700px;
+      padding: 20px;
+    }
+    .question {
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .question::after {
+      content: "➡️";
+      transition: transform 0.3s ease;
+    }
+    .question.open::after {
+      transform: rotate(90deg);
+    }
+    .reponse {
+      overflow: hidden;
+      max-height: 0;
+      transition: all 0.4s ease;
+      color: #555;
+      margin-top: 10px;
+    }
+    .reponse.show {
+      max-height: 800px;
+    }
+    .choix {
+      margin-top: 10px;
+    }
+    .choix button {
+      background-color: #2563eb;
+      color: #fff;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    .choix button:hover {
+      background-color: #1e4ed8;
+    }
+    .sous-section {
+      background-color: #f0f4ff;
+      border-left: 3px solid #2563eb;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 6px;
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(-5px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+
+  <h1>FAQ interactive 🌿</h1>
+
+  <!-- 🟢 Section 1 -->
+  <div class="section">
+    <div class="question">Souhaitez-vous en savoir plus sur le fonctionnement ?</div>
+    <div class="reponse">
+      <p>Choisissez une réponse :</p>
+      <div class="choix">
+        <button data-target="oui1">Oui</button>
+        <button data-target="non1">Non</button>
+      </div>
+      <div class="sous-section" id="oui1">
+        <p>Le fonctionnement est basé sur des scripts JavaScript simples qui affichent les sous-sections dynamiquement 💡</p>
+      </div>
+      <div class="sous-section" id="non1">
+        <p>Aucun souci 😄 Vous pouvez passer à la question suivante.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🟢 Section 2 -->
+  <div class="section">
+    <div class="question">Voulez-vous connaître les technologies utilisées ?</div>
+    <div class="reponse">
+      <p>Choisissez une réponse :</p>
+      <div class="choix">
+        <button data-target="oui2">Oui</button>
+        <button data-target="non2">Non</button>
+      </div>
+      <div class="sous-section" id="oui2">
+        <p>Ce projet utilise uniquement HTML, CSS et JavaScript — aucun framework requis 🚀</p>
+      </div>
+      <div class="sous-section" id="non2">
+        <p>Pas de problème 😊 Allons à la prochaine question.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🟢 Section 3 -->
+  <div class="section">
+    <div class="question">Souhaitez-vous personnaliser les couleurs ?</div>
+    <div class="reponse">
+      <p>Choisissez une réponse :</p>
+      <div class="choix">
+        <button data-target="oui3">Oui</button>
+        <button data-target="non3">Non</button>
+      </div>
+      <div class="sous-section" id="oui3">
+        <p>Vous pouvez facilement changer les couleurs dans le bloc CSS, notamment les variables <code>#2563eb</code> et <code>#f0f4ff</code> 🎨</p>
+      </div>
+      <div class="sous-section" id="non3">
+        <p>Très bien 👍 Les couleurs actuelles sont déjà harmonieuses.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🟢 Section 4 -->
+  <div class="section">
+    <div class="question">Souhaitez-vous télécharger cette FAQ ?</div>
+    <div class="reponse">
+      <p>Choisissez une réponse :</p>
+      <div class="choix">
+        <button data-target="oui4">Oui</button>
+        <button data-target="non4">Non</button>
+      </div>
+      <div class="sous-section" id="oui4">
+        <p>Il suffit de copier ce code HTML dans ton éditeur (comme VS Code) et d’enregistrer en <code>faq.html</code> 💾</p>
+      </div>
+      <div class="sous-section" id="non4">
+        <p>D’accord 😄 Vous pouvez simplement l’essayer ici pour l’instant.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Gère l’ouverture / fermeture de chaque question principale
+    const questions = document.querySelectorAll('.question');
+    questions.forEach(q => {
+      q.addEventListener('click', () => {
+        q.classList.toggle('open');
+        q.nextElementSibling.classList.toggle('show');
+      });
+    });
+
+    // Gère les boutons Oui / Non
+    const boutons = document.querySelectorAll('.choix button');
+    boutons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const parent = btn.closest('.reponse');
+        const targetId = btn.dataset.target;
+
+        // Masque toutes les sous-sections de cette réponse
+        parent.querySelectorAll('.sous-section').forEach(sec => sec.style.display = 'none');
+
+        // Affiche uniquement la sous-section ciblée
+        const cible = document.getElementById(targetId);
+        if (cible) {
+          cible.style.display = 'block';
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
